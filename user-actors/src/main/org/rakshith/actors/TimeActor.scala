@@ -28,7 +28,6 @@ class TimeActor extends Actor{
             sender() ! jsonConversion(allTime.mkString(","))
           case _ => sender() ! "Invalid Timezone"
   }
-
   def getTimeFromTimeZone(timeZone: String): String = {
     val cal = Calendar.getInstance()
     TimeZone.setDefault(TimeZone.getTimeZone(timeZone))
@@ -38,7 +37,6 @@ class TimeActor extends Actor{
     val dateFormat = formatter.format(currentTime)
     dateFormat
   }
-
   def jsonConversion(time: String) : String ={
     val jsonString: String = "{"+"\""+"Current Time"+"\""+":"+s"$time"+"}"
     jsonString
